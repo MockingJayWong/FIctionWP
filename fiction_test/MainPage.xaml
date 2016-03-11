@@ -1,0 +1,83 @@
+﻿<Page
+    x:Class="fiction_test.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:fiction_test"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Page.BottomAppBar>
+        <CommandBar ClosedDisplayMode="Minimal">
+            <CommandBar.SecondaryCommands>
+                <AppBarButton Click="AppBarButton_Click" Label="添加新小说"></AppBarButton>
+            </CommandBar.SecondaryCommands>
+        </CommandBar>
+    </Page.BottomAppBar>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*" />
+            <RowDefinition Height="8*" />
+
+        </Grid.RowDefinitions>
+        <Pivot Title="小说阅读器" Grid.RowSpan="2">
+            <PivotItem Header="主页">
+                <StackPanel>
+                    <StackPanel Name="main">
+                        <Button x:Name="rbt" Click="rbt_Click" HorizontalAlignment="Center"  Content="点击刷新起点小说" VerticalAlignment="Top"  Width="200"/>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock FontSize="30" VerticalAlignment="Center" Text="自动搜索"/>
+                            <ToggleSwitch Name="tg1" Toggled="tg1_Toggled" Margin="50 0 0 0"></ToggleSwitch>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock FontSize="30" VerticalAlignment="Center" Text="百度浏览"/>
+                            <ToggleSwitch Name="tg2" Toggled="tg2_Toggled"  Margin="50 0 0 0"></ToggleSwitch>
+                        </StackPanel>
+                        <TextBox Name="num" />
+                            <ListView x:Name="ls"  >
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel  Holding="StackPanel_Holding" PointerPressed="StackPanel_PointerPressed" PointerExited="StackPanel_PointerExited" Background="OliveDrab" ManipulationMode="All" Orientation="Vertical">
+                                        <TextBlock Text="{Binding Name}" Foreground="AliceBlue" FontSize="20"/>
+                                        <TextBlock Text="{Binding Newchapter}" Foreground="Aqua" FontSize="15"/>
+                                        <Rectangle Height="3" Fill="Bisque"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+
+
+                    </StackPanel>
+
+                    <StackPanel x:Name="sp" VerticalAlignment="Top" Visibility="Collapsed">
+                        <StackPanel>
+                            <TextBlock Text="小说名:" FontSize="30" Padding="0 12 0 0" />
+                            <TextBox FontSize="20" Width="290" Name="fic_t"/>
+                        </StackPanel>
+                        <StackPanel >
+                            <TextBlock Text="网址(起点):" FontSize="30" Padding="0 12 0 0" />
+                            <TextBox FontSize="20" Width="290" Name="fic_w"  />
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <AppBarButton Margin="120 0 0 0" Click="AppBarButton_Click_1" Icon="Accept" Label="加入" />
+                            <AppBarButton Click="AppBarButton_Click_2" Icon="Cancel" Label="取消" />
+                        </StackPanel>
+                    </StackPanel>
+                </StackPanel>
+            </PivotItem>
+
+            <PivotItem Header="关于">
+                <StackPanel>
+                    <TextBlock FontSize="20">Created By MockingJayWong</TextBlock>
+                    <TextBlock FontSize="20">Finish on 2015年8月8日</TextBlock>
+                    <TextBlock FontSize="20">If any problem</TextBlock>
+                    <TextBlock FontSize="20">Plz contact hahuhu19@163.com</TextBlock>
+                </StackPanel>
+            </PivotItem>
+        </Pivot>
+
+        
+
+    </Grid>
+</Page>
